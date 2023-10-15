@@ -1,0 +1,33 @@
+﻿<Window x:Class="CarShop.ClientsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarShop"
+        mc:Ignorable="d"
+        Closing="Window_Closing"
+        Title="ClientsWindow" Height="450" Width="800" IsVisibleChanged="Window_IsVisibleChanged">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="24*"/>
+            <ColumnDefinition Width="373*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid ItemsSource="{Binding ClientsList}" x:Name="grdClients" HorizontalAlignment="Left" Height="348" Margin="25,63,0,0" VerticalAlignment="Top" Width="747" AutoGenerateColumns="False" Grid.ColumnSpan="2" CellEditEnding="grdClients_CellEditEnding">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="First Name" Width="150" Binding="{Binding FirstName, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Last Name" Width="100" Binding="{Binding LastName, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="PIN" Width="100" Binding="{Binding PIN, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Phone Number" Width="100" Binding="{Binding PhoneNumber, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Address" Width="100" Binding="{Binding Address, NotifyOnTargetUpdated=True, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Width="80" Click="btnDelete_Click" Content="Delete"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnAddClient" Content="Add Client" HorizontalAlignment="Left" Margin="25,22,0,0" VerticalAlignment="Top" Width="75" Click="btnAddClient_Click" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
